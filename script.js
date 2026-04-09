@@ -1,5 +1,5 @@
 let answer = 0
-let GuessCount = 0
+let guessCount = 0
 let totalwin = 0
 let totalGuess = 0
 let range = 3
@@ -16,6 +16,7 @@ document.getElementById("playBtn").addEventListener("click", function(){
         }
     }
     answer = Math.floor(Math.random() * range)+1;
+    guessCount = 0;
 
     document.getElementById("msg").textContent = playname + ", guess a number between 1 and "+ range
     document.getElementById("guess").value = 0
@@ -39,11 +40,10 @@ document.getElementById("guessBtn").addEventListener("click", function guess(){
     document.getElementById("guess").value = ""
     return;
     }
-    GuessCount++;
+    guessCount++;
 
     //judge part 
     while (guess != answer) {
-        totalGuess++;
         if(Math.abs(guess - answer) <= 2){
             temp = "hot"
         }else if(Math.abs(guess - answer) <= 5){
@@ -58,21 +58,37 @@ document.getElementById("guessBtn").addEventListener("click", function guess(){
         }
         return;
     }    
-    document.getElementById("msg").textContent = "Correct,you win this game in "+totalGuess+" tries.";
+    document.getElementById("msg").textContent = "Correct,you win this game in "+guessCount+" tries.";
     document.getElementById("guessBtn").disabled = true
-
-    updateScore(totalGuess)
+    document.getElementById("giveUpBtn").disabled = true
+    document.getElementById("playBtn").disabled = false
+        let radios = document.getElementsByName("level")
+        for (let i=0;i < radios.length; i++){
+        radios[i].disabled = false}
+    updateScore(guessCount)
 })
-
 //reset part
     document.getElementById("giveUpBtn").addEventListener("click", function reset(){
             document.getElementById("msg").textContent = "GG"
+        guessCount = 0
         let radios = document.getElementsByName("level")
         for (let i=0;i < radios.length; i++){
         radios[i].disabled = false}
         document.getElementById("guessBtn").disabled = true
         document.getElementById("giveUpBtn").disabled = true
         document.getElementById("playBtn").disabled = false
+
+        scores.push(range)
+        scores.sort(function(a,b){return a-b})
+    let leaderboard = document.getElementsByName("leaderboard")
+    for (let i=0;i < leaderboard.length; i++){
+        if (i < scores.length){
+        leaderboard[i].textContent = scores[i]
+        }else{
+        leaderboard[i].textContent = "--"
+        }
+    }
+    
 })
 
 function updateScore(score){
@@ -93,3 +109,24 @@ function updateScore(score){
         }
     }
 }
+//date
+let now = new Date()
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let monthNow = months[now.getMonth()]
+let year = now.getFullYear()
+let date = now.getDate()
+let dateName = ""
+
+if (date == 1||date == 21||date == 31){
+    dateName = date + "st"
+}else if(date == 2||date == 22){
+    dateName = date + "nd"
+}else if(date == 3||date == 23){
+    dateName = date + "rd"
+}else{
+    dateName = date + "th"
+}
+function time(){
+document.getElementById("date").textContent = dateName+"/"+monthNow+"/"+year
+}
+ let interval = setInterval(time,1000)
