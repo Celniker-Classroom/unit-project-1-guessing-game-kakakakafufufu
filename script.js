@@ -104,17 +104,8 @@ document.getElementById("guessBtn").addEventListener("click", function guess(){
         document.getElementById("guessBtn").disabled = true
         document.getElementById("giveUpBtn").disabled = true
         document.getElementById("playBtn").disabled = false
-
-        scores.push(range)
-        scores.sort(function(a,b){return a-b})
-    let leaderboard = document.getElementsByName("leaderboard")
-    for (let i=0;i < leaderboard.length; i++){
-        if (i < scores.length){
-        leaderboard[i].textContent = scores[i]
-        }else{
-        leaderboard[i].textContent = "--"
-        }
-    }
+        updateScore(range)
+    
 })
 
 function updateScore(score){
