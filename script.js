@@ -28,7 +28,7 @@ if (date == 1||date == 21||date == 31){
     dateName = date + "th"
 }
 
-document.getElementById("date").textContent = hours+":"+minutes+":"+seconds+"  "+dateName+"/"+monthNow+"/"+year
+document.getElementById("date").textContent = hours+":"+minutes+":"+seconds+"  "+dateName+" / "+monthNow+" / "+year
 }
 time()
 setInterval(time, 1000)

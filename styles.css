@@ -1,0 +1,71 @@
+body{
+    margin: 0;
+    background-color: rgb(169, 100, 230);
+    color: white;
+}
+
+#date{
+    font-size: 30px;
+}
+
+
+button{
+ padding: 10px;
+  margin:0px auto;
+
+ border: 2px solid rgb(252, 252, 252);
+  background-color: rgb(160, 193, 255);
+ border-radius: 10px;
+}
+
+#playBtn{
+    margin-left: 10px;
+}
+
+button:not(:disabled):hover{
+    color:white;
+    background-color: rgb(44, 85, 163);
+}
+
+#guess{
+    max-width:300px;
+    border-radius: 1000px;
+    padding: 10px;
+    padding-left: 25px;
+    border: 2px solid rgb(4, 68, 229);
+}
+
+#box{
+    margin:0px auto;
+  padding: 10px;
+  padding-bottom: 0px;
+  width:500px;
+  border: 2px solid rgb(252, 252, 252);
+  background-color: rgb(224, 111, 255);
+}
+
+#p{
+    text-align: left;
+    font-size: 25px;
+}
+
+#msg{
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 25px;
+    color: black;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(169, 4, 229);
+}
+
+.big{
+     text-align: center;
+ font-size: 30px;
+ padding: 10px;
+ max-width: 170px;
+  margin:0px auto;
+
+ border: 2px solid rgb(252, 252, 252);
+  background-color: rgb(160, 193, 255);
+ border-radius: 1000px;
+}
