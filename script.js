@@ -5,6 +5,8 @@ let totalGuess = 0
 let range = 3
 let scores = []
 let interval = null
+let times = []
+let startTime = 0
 //date
 function time(){
 let now = new Date()
@@ -42,6 +44,7 @@ document.getElementById("playBtn").addEventListener("click", function(){
         }
     }
     answer = Math.floor(Math.random() * range)+1;
+    startTime = new Date().getTime();
     guessCount = 0;
 
     document.getElementById("msg").textContent = playname + ", guess a number between 1 and "+ range
@@ -92,7 +95,7 @@ document.getElementById("guessBtn").addEventListener("click", function guess(){
         for (let i=0;i < radios.length; i++){
         radios[i].disabled = false}
     updateScore(guessCount)
-
+    end()
 })
 //reset part
     document.getElementById("giveUpBtn").addEventListener("click", function reset(){
@@ -105,7 +108,7 @@ document.getElementById("guessBtn").addEventListener("click", function guess(){
         document.getElementById("giveUpBtn").disabled = true
         document.getElementById("playBtn").disabled = false
         updateScore(range)
-    
+        end()
 })
 
 function updateScore(score){
@@ -127,4 +130,29 @@ function updateScore(score){
     }
 }
 
+function end(){
+    let now = new Date().getTime();
+    let elapsed = (now - startTime) / 1000
 
+    times.push(elapsed)
+    updateTime()
+}
+
+function updateTime(){
+    if(times.length === 0){return}
+
+    let fastest = times[0]
+    let timeSum = 0
+
+
+    for (let i=0;i < times.length; i++){
+       timeSum += times[i]
+       if (times[i] < fastest){
+           fastest = times[i]
+       }
+    }
+    let averageTime = timeSum/times.length
+
+    document.getElementById("fastest").textContent = "Fastest Game: "+fastest.toFixed(2)
+    document.getElementById("avgTime").textContent = "Average Time: "+averageTime.toFixed(2)
+}
