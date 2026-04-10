@@ -5,6 +5,29 @@ let totalGuess = 0
 let range = 3
 let scores = []
 let interval = null
+//date
+let now = new Date()
+let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let monthNow = months[now.getMonth()]
+let year = now.getFullYear()
+let date = now.getDate()
+let dateName = ""
+
+
+if (date == 1||date == 21||date == 31){
+    dateName = date + "st"
+}else if(date == 2||date == 22){
+    dateName = date + "nd"
+}else if(date == 3||date == 23){
+    dateName = date + "rd"
+}else{
+    dateName = date + "th"
+}
+
+function time(){
+document.getElementById("date").textContent = dateName+"/"+monthNow+"/"+year
+}
+setInterval(time, 1000)
 //player name 
 let playname = prompt("input your name")
 playname = playname.charAt(0).toUpperCase() + playname.slice(1).toLocaleLowerCase();
@@ -59,7 +82,7 @@ document.getElementById("guessBtn").addEventListener("click", function guess(){
         }
         return;
     }    
-    document.getElementById("msg").textContent = "Correct,"+playname+", you win this game in "+guessCount+" tries.";
+    document.getElementById("msg").textContent = "Correct,"+playname+",you win this game in "+guessCount+" tries.";
     document.getElementById("guessBtn").disabled = true
     document.getElementById("giveUpBtn").disabled = true
     document.getElementById("playBtn").disabled = false
@@ -110,19 +133,5 @@ function updateScore(score){
         }
     }
 }
-//date
-let now = new Date()
-let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-let monthNow = months[now.getMonth()]
-let year = now.getFullYear()
-let date = now.getDate()
-let datelist = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th", "11th", "12th", "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd", "24th", "25th", "26th", "27th", "28th", "29th", "30th", "31st"];
-let dateName = ""
 
-dateName = datelist[date - 1]
-
-function time(){
-document.getElementById("date").textContent = dateName+"/"+monthNow+"/"+year
-}
-setInterval(time, 1000)
 
