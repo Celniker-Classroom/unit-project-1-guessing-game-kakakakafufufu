@@ -24,9 +24,11 @@ if (date == 1||date == 21||date == 31){
     dateName = date + "th"
 }
 
+function time(){
 document.getElementById("date").textContent = dateName+"/"+monthNow+"/"+year
-
-
+}
+time()
+setInterval(time, 1000)
 //player name 
 let playname = prompt("input your name")
 playname = playname.charAt(0).toUpperCase() + playname.slice(1).toLocaleLowerCase();
