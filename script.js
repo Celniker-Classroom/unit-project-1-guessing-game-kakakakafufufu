@@ -5,8 +5,9 @@ let totalGuess = 0
 let range = 3
 let scores = []
 let playname = prompt("input your name")
+let interval = null
 //player name 
-playname = playname.charAt(0).toUpperCase() + playname.slice(1);
+playname = playname.charAt(0).toUpperCase() + playname.slice(1).toLocaleLowerCase();
 //Select Level
 document.getElementById("playBtn").addEventListener("click", function(){
     let radios = document.getElementsByName("level")
@@ -66,6 +67,7 @@ document.getElementById("guessBtn").addEventListener("click", function guess(){
         for (let i=0;i < radios.length; i++){
         radios[i].disabled = false}
     updateScore(guessCount)
+
 })
 //reset part
     document.getElementById("giveUpBtn").addEventListener("click", function reset(){
@@ -88,7 +90,6 @@ document.getElementById("guessBtn").addEventListener("click", function guess(){
         leaderboard[i].textContent = "--"
         }
     }
-    
 })
 
 function updateScore(score){
@@ -117,6 +118,7 @@ let year = now.getFullYear()
 let date = now.getDate()
 let dateName = ""
 
+
 if (date == 1||date == 21||date == 31){
     dateName = date + "st"
 }else if(date == 2||date == 22){
@@ -126,7 +128,9 @@ if (date == 1||date == 21||date == 31){
 }else{
     dateName = date + "th"
 }
+
 function time(){
 document.getElementById("date").textContent = dateName+"/"+monthNow+"/"+year
 }
- let interval = setInterval(time,1000)
+setInterval(time, 1000)
+
