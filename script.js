@@ -4,9 +4,9 @@ let totalwin = 0
 let totalGuess = 0
 let range = 3
 let scores = []
-let playname = prompt("input your name")
 let interval = null
 //player name 
+let playname = prompt("input your name")
 playname = playname.charAt(0).toUpperCase() + playname.slice(1).toLocaleLowerCase();
 //Select Level
 document.getElementById("playBtn").addEventListener("click", function(){
@@ -59,7 +59,7 @@ document.getElementById("guessBtn").addEventListener("click", function guess(){
         }
         return;
     }    
-    document.getElementById("msg").textContent = "Correct,you win this game in "+guessCount+" tries.";
+    document.getElementById("msg").textContent = "Correct,"+playname+", you win this game in "+guessCount+" tries.";
     document.getElementById("guessBtn").disabled = true
     document.getElementById("giveUpBtn").disabled = true
     document.getElementById("playBtn").disabled = false
