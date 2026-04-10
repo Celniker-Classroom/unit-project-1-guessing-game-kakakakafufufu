@@ -6,14 +6,16 @@ let range = 3
 let scores = []
 let interval = null
 //date
+function time(){
 let now = new Date()
 let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 let monthNow = months[now.getMonth()]
 let year = now.getFullYear()
 let date = now.getDate()
 let dateName = ""
-
-
+let hours = now.getHours()
+let minutes = now.getMinutes()
+let seconds = now.getSeconds()
 if (date == 1||date == 21||date == 31){
     dateName = date + "st"
 }else if(date == 2||date == 22){
@@ -24,8 +26,7 @@ if (date == 1||date == 21||date == 31){
     dateName = date + "th"
 }
 
-function time(){
-document.getElementById("date").textContent = dateName+"/"+monthNow+"/"+year
+document.getElementById("date").textContent = hours+":"+minutes+":"+seconds+"  "+dateName+"/"+monthNow+"/"+year
 }
 time()
 setInterval(time, 1000)
